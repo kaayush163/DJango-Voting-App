@@ -24,6 +24,10 @@
             <li class="nav-item">
               <a class="nav-link" href="#instructions">Instructions</a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#result">Result</a>
+            </li>
             
           </ul>
           
@@ -31,7 +35,6 @@
       </div>
     </nav>
 <div class="container-fluid" style="margin-bottom:20rem;">
-  {{globalcnt}}
   <div class="row">
       <div class="col-md-6" style="margin: 1rem auto 1rem auto;">
         <!-- <div class="img-fluid" src="{% static 'main.jpg' %}"> -->
@@ -53,12 +56,12 @@
                     {% for eachlanguage in arr%}
                     <option value="{{eachlanguage}}"></option>
                     {%endfor%}
-
-
                   </datalist>
-                    <div class="form-group">
+                  
+
+                    <!-- <div class="form-group">
                       <input type="search" class="form-control" name="query" id="query">
-                    </div>
+                    </div> -->
                     <div class="row">
                       <div class="col-md-6">
                          <input type="submit" class="btn btn-success" style="display:block; margin: 0 auto;"> 
@@ -68,6 +71,8 @@
                       </div>
                     </div>
                 </form>
+             <!-- {{globalcnt}} -->
+
             </div>
           </div>
       </div>
@@ -80,7 +85,7 @@
           <strong>error</strong>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <!-- {% else %} -->
+        
         {% endif %}
         
         {% if result %}
@@ -92,7 +97,43 @@
       </div>
 </div>
 
+<div class="row">
+  <div class="col-md-6" style="margin:2rem auto 0 auto;">
+    <p class="lead" id="result" name="result" 
+    style="text-align: center; display:block;font-size:2rem;">
+      Result
+    </p>
+    <hr>
+    <p class="lead" style="text-align: center;">
+      Result Table
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-reponsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Language</th>
+              <th scope="col">count</th>
 
+            </tr>
+          </thead>
+          <tbody>
+            {%for key,value in globalcnt.items %}
+            <tr>
+              <td>{{forloop.counter}}</td>>
+              <td>{{key}}</td>
+              <td>{{value}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
     <div class="row">
       <div class="col-md-6" style="margin:2rem auto 0 auto;">
         <p class="display-4" id="about" name="about" style="text-align: center;">
